@@ -7,6 +7,7 @@
   --clr-text: hsl(60, 40%, 2%);
   --clr-background: hsl(50, 45%, 90%);
   --clr-primary: hsl(48, 46%, 74%);
+  --clr-primary-hover: hsl(48, 46%, 79%);
   --clr-secondary: hsl(53, 43%, 96%);
   --clr-accent: hsl(0, 57%, 75%);
 }
@@ -16,6 +17,7 @@
       --clr-text: hsl(50, 45%, 90%);
       --clr-background: hsl(60, 40%, 2%);
       --clr-primary: hsl(48, 46%, 64%);
+      --clr-primary-hover: hsl(48, 46%, 69%);
       --clr-secondary: hsl(53, 30%, 86%);
       --clr-accent: hsl(0, 57%, 65%);
     }
@@ -28,4 +30,96 @@ html {
 body {
   background-color: var(--clr-background);
   color: var(--clr-text);
+  padding: 1rem;
+  font-family: 'Amatic SC', Arial, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: 'Palette Mosaic', Arial, cursive;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+h3 {
+  font-size: 1.1em;
+}
+
+#navbar {
+  position: sticky;
+  top: 1rem;
+  background-color: var(--clr-secondary);
+  padding: .5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2.5em;
+  z-index: 10;
+}
+
+.links-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.links-wrapper .nav-link {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.links-wrapper .nav-link:visited {
+  color: var(--clr-text)
+}
+
+.links-wrapper .nav-link:hover,
+.links-wrapper .nav-link:focus {
+  color: var(--clr-primary);
+}
+
+.shopping-cart-btn {
+  --_notification-size: .6em;
+  
+  position: relative;
+  border: 2px solid var(--clr-primary);
+  background-color: var(--clr-primary);
+  border-radius: 4rem;
+  padding: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 1em;
+}
+
+.shopping-cart-btn:hover,
+.shopping-cart-btn:focus {
+  background-color: var(--clr-primary-hover);
+}
+
+.cart-qty {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--_notification-size) * 2);
+  aspect-ratio: 1;
+  bottom: 0;
+  right: 0;
+  background-color: var(--clr-accent);
+  color: var(--clr-secondary);
+  font-size: var(--_notification-size);
+  transform: translate(30%, 30%);
+  border-radius: var(--_notification-size);
 }
