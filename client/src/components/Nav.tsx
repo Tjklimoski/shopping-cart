@@ -3,13 +3,14 @@ import { MdShoppingCart } from 'react-icons/md'
 
 export default function Nav() {
   return (
-    <nav>
+    <nav id="navbar">
+      <h1 className="company-name">Chocolate</h1>
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/shop">Shop</Link>
-        <Link to="/about">About</Link>
+        <Link className="nav-link" to="/">Home</Link>
+        <Link className="nav-link" to="/shop">Shop</Link>
+        <Link className="nav-link" to="/about">About</Link>
       </div>
-      <button>
+      <button className="shopping-cart-btn">
         <MdShoppingCart />
       </button>
     </nav>

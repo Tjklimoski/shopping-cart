@@ -1,3 +1,3 @@
 export default function About() {
-  return <h1>Home</h1>
+  return <h2>Home</h2>
 }
