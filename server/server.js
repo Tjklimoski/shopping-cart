@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import Product from "./productModel.js";
 // Array of default products to populate storeDB with
-import products from "./data/products.json" assert { type: "json" };
+import products from "./data/products.js";
 dotenv.config();
 
 const app = express();
@@ -14,8 +14,25 @@ mongoose.connect(process.env.DB_URL);
 Product.collection.drop();
 Product.insertMany(products);
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
+app.get("/products", async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.send(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
+});
+
+app.get("/products/:id", async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const product = await Product.findById(req.params.id);
+    res.send(product);
+  } catch (err) {
+    console.error(err);
+    res.status(500);
+  }
 });
 
 app.listen(process.env.PORT, (e) =>
