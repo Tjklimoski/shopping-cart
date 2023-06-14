@@ -1,0 +1,31 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  --clr-text: hsl(60, 40%, 2%);
+  --clr-background: hsl(50, 45%, 90%);
+  --clr-primary: hsl(48, 46%, 74%);
+  --clr-secondary: hsl(53, 43%, 96%);
+  --clr-accent: hsl(0, 57%, 75%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+      --clr-text: hsl(50, 45%, 90%);
+      --clr-background: hsl(60, 40%, 2%);
+      --clr-primary: hsl(48, 46%, 64%);
+      --clr-secondary: hsl(53, 30%, 86%);
+      --clr-accent: hsl(0, 57%, 65%);
+    }
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background-color: var(--clr-background);
+  color: var(--clr-text);
+}
