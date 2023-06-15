@@ -1,4 +1,5 @@
 import React from 'react';
+import { useShoppingCart } from '../context/ShoppingCartProvider';
 
 type ShoppingCartControlsProps = {
   id: string

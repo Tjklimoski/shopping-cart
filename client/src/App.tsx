@@ -3,11 +3,12 @@ import Home from "./pages/Home"
 import Shop from "./pages/Shop"
 import About from "./pages/About"
 import Nav from "./components/Nav"
+import { ShoppingCartProvider } from "./context/ShoppingCartProvider"
 
 function App() {
 
   return (
-    <>
+    <ShoppingCartProvider>
       <Nav />
       <div className="page-content-wrapper">
         <Routes>
@@ -16,7 +17,7 @@ function App() {
           <Route path="/about" element={<About />}/>
         </Routes>
       </div>
-    </>
+    </ ShoppingCartProvider>
     )
 }
 
