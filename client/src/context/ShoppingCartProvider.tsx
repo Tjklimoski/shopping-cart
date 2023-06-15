@@ -6,7 +6,7 @@ export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
 
-export function ShoppingCartProvider({children} : ReactElement) {
+export function ShoppingCartProvider({children : React.ReactElement}) {
 
   const value = {
 

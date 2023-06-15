@@ -26,8 +26,8 @@ app.get("/products", async (req, res) => {
     const products = await Product.find({});
     res.send(products);
   } catch (err) {
-    console.error(err);
     res.status(500);
+    res.send();
   }
 });
 
@@ -37,8 +37,8 @@ app.get("/products/:id", async (req, res) => {
     const product = await Product.findById(req.params.id);
     res.send(product);
   } catch (err) {
-    console.error(err);
-    res.status(500);
+    res.status(400);
+    res.send();
   }
 });
 
