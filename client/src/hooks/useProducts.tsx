@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import dotenv from 'dotenv';
-// dotenv.config();
+
+export type Product = {
+  _id: string
+  name: string
+  price: number
+  imgUrl: string
+}
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export default function useProducts( getProducts = true, id?: string ) {
-  const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState({});
+  const [products, setProducts] = useState<Product[]>([]);
+  const [product, setProduct] = useState<Product>();
   const [status, setStatus] = useState<number>()
 
   // get all products
