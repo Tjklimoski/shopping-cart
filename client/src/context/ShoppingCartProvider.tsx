@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { ReactNode, useContext } from 'react'
 
 const ShoppingCartContext = React.createContext({});
 
@@ -6,10 +6,16 @@ export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
 
-export function ShoppingCartProvider({children : React.ReactElement}) {
+type ShoppingCartProps = {
+  children: ReactNode
+}
+
+export function ShoppingCartProvider({ children } : ShoppingCartProps) {
 
   const value = {
-
+    addOneToCart,
+    removeOneFromCart,
+    removeFromCart,
   }
 
   return (
