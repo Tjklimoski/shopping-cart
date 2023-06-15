@@ -4,15 +4,22 @@ import dotenv from "dotenv";
 import Product from "./productModel.js";
 // Array of default products to populate storeDB with
 import products from "./data/products.js";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
 
+app.use(cors({ origin: process.env.CLIENT_URL }));
+
 mongoose.connect(process.env.DB_URL);
 
 // To populate the storeDB with default products, not needed for production
-Product.collection.drop();
-Product.insertMany(products);
+populateDB();
+
+async function populateDB() {
+  await Product.collection.drop();
+  await Product.insertMany(products);
+}
 
 app.get("/products", async (req, res) => {
   try {
