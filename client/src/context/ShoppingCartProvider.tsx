@@ -13,6 +13,7 @@ type ShoppingCartProps = {
 export function ShoppingCartProvider({ children } : ShoppingCartProps) {
 
   const value = {
+    shoppingCart,
     addOneToCart,
     removeOneFromCart,
     removeFromCart,

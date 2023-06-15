@@ -1,8 +1,9 @@
 import { Product } from "../hooks/useProducts";
 import formatPrice from '../util/formatPrice';
+import ShoppingCartControls from '../components/ShoppingCartControls';
 
 export default function ProductCard({ _id, name, price, imgUrl } : Product) {
-  const inCart = false;
+  const inCart = true;
 
   return (
     <div className="product-card">
@@ -13,7 +14,10 @@ export default function ProductCard({ _id, name, price, imgUrl } : Product) {
           <span className="product-price">{formatPrice(price)}</span>
         </div>
         <div className="product-cart">
-          {inCart ? null : <button className="add-to-cart-btn">+ Add to Cart</button>}
+          {inCart ? 
+            <ShoppingCartControls id={_id} /> : 
+            <button className="add-to-cart-btn">+ Add to Cart</button>
+          }
         </div>
       </div>
     </div>
