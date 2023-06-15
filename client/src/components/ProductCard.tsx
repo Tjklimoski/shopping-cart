@@ -5,7 +5,7 @@ export default function ProductCard({ _id, name, price, imgUrl } : Product) {
 
   return (
     <div className="product-card">
-      <img className="product-img" src={imgUrl} />
+      <img className="product-img" src={imgUrl} loading="lazy" />
       <div className="product-card-bottom">
         <div className="product-info">
           <h3 className="product-name">{name}</h3>
