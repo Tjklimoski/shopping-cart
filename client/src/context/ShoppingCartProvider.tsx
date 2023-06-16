@@ -17,7 +17,7 @@ type CartItems = {
 
 export function ShoppingCartProvider({ children } : ShoppingCartProps) {
   const [shoppingCart, setShoppingCart] = useState<CartItems[]>([]);
-  console.log(shoppingCart);
+  const [isOpen, setIsOpen] = useState(false);
 
   function addOneToCart(id : string) {
     setShoppingCart(currentCart => {
@@ -40,7 +40,7 @@ export function ShoppingCartProvider({ children } : ShoppingCartProps) {
       if (!inCart(currentCart, id)) return currentCart;
 
       const itemToRemoveFrom = currentCart.find(item => item.id === id);
-      const qty = itemToRemoveFrom?.qty - 1;
+      const qty = (itemToRemoveFrom?.qty || 0) - 1;
 
       if (qty > 0) {
         return currentCart.map(item => {
@@ -60,11 +60,21 @@ export function ShoppingCartProvider({ children } : ShoppingCartProps) {
     })
   }
 
+  function openCart() {
+    setIsOpen(true);    
+  }
+
+  function closeCart() {
+    setIsOpen(false)
+  }
+
   const value = {
     shoppingCart,
     addOneToCart,
     removeOneFromCart,
     removeFromCart,
+    openCart,
+    closeCart
   }
 
   return (

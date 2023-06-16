@@ -1,9 +1,12 @@
 import { Product } from "../hooks/useProducts";
 import formatPrice from '../util/formatPrice';
 import ShoppingCartControls from '../components/ShoppingCartControls';
+import { useShoppingCart } from "../context/ShoppingCartProvider";
 
 export default function ProductCard({ _id, name, price, imgUrl } : Product) {
-  const inCart = true;
+  const { shoppingCart, addOneToCart } = useShoppingCart();
+
+  const qty = shoppingCart.find(item => item.id === _id)?.qty || 0;
 
   return (
     <div className="product-card">
@@ -14,9 +17,9 @@ export default function ProductCard({ _id, name, price, imgUrl } : Product) {
           <span className="product-price">{formatPrice(price)}</span>
         </div>
         <div className="product-cart">
-          {inCart ? 
-            <ShoppingCartControls id={_id} /> : 
-            <button className="add-to-cart-btn">+ Add to Cart</button>
+          {qty > 0 ? 
+            <ShoppingCartControls id={_id} qty={qty} /> : 
+            <button className="add-to-cart-btn" onClick={() => addOneToCart(_id)}>+ Add to Cart</button>
           }
         </div>
       </div>
