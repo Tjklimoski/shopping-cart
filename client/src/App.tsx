@@ -4,6 +4,7 @@ import Shop from "./pages/Shop"
 import About from "./pages/About"
 import Nav from "./components/Nav"
 import { ShoppingCartProvider } from "./context/ShoppingCartProvider"
+import ShoppingCart from "./components/ShoppingCart"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/about" element={<About />}/>
         </Routes>
       </div>
+      <ShoppingCart />
     </ ShoppingCartProvider>
     )
 }

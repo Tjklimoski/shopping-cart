@@ -74,7 +74,8 @@ export function ShoppingCartProvider({ children } : ShoppingCartProps) {
     removeOneFromCart,
     removeFromCart,
     openCart,
-    closeCart
+    closeCart,
+    isOpen,
   }
 
   return (
