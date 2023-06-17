@@ -13,7 +13,7 @@ const SERVER_URL = import.meta.env.VITE_SERVER_URL
 export default function useProducts( getProducts = true, id?: string ) {
   const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<Product>();
-  const [status, setStatus] = useState<number>()
+  const [status, setStatus] = useState<number>(102);
 
   // get all products
   useEffect(() => {

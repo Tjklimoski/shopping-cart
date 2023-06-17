@@ -12,7 +12,9 @@ export default function ShoppingCart() {
           <h2>Cart</h2>
           <button className="shopping-cart-close" onClick={closeCart}>&times;</button>
         </div>
-        <ShoppingCartItem />
+        {shoppingCart.map(cartItem => {
+          return <ShoppingCartItem key={cartItem.id} {...cartItem} />
+        })}
         <div className='shopping-cart-total'>
           TOTAL: {cartTotal}
         </div>

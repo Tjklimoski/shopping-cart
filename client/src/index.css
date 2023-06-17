@@ -323,11 +323,21 @@ button:focus {
 }
 
 .shopping-cart-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: .5em;
-  margin-bottom: 1em;
-  border: 1px solid black;
+  margin-bottom: 1.5em;
+}
+
+.shopping-cart-item::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: var(--clr-text);
+  bottom: 0;
+  transform: translateY(.75em);
 }
 
 .shopping-cart-item-img {
