@@ -1,9 +1,9 @@
 import { useShoppingCart } from '../context/ShoppingCartProvider'
+import formatPrice from '../util/formatPrice';
 import ShoppingCartItem from './ShoppingCartItem';
 
 export default function ShoppingCart() {
-  const { shoppingCart, closeCart, isOpen } = useShoppingCart();
-  const cartTotal = '$15.76';
+  const { shoppingCart, closeCart, isOpen, cartTotal } = useShoppingCart();
 
   return (
     <div className={`shopping-cart-wrapper ${isOpen ? 'active' : ''}`}>
@@ -16,7 +16,7 @@ export default function ShoppingCart() {
           return <ShoppingCartItem key={cartItem.id} {...cartItem} />
         })}
         <div className='shopping-cart-total'>
-          TOTAL: {cartTotal}
+          TOTAL: {formatPrice(cartTotal)}
         </div>
       </div>
     </div>

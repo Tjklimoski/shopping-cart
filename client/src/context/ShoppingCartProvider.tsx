@@ -13,13 +13,19 @@ type ShoppingCartProps = {
 type CartItems = {
   id: string
   qty: number
+  price: number
 }
 
 export function ShoppingCartProvider({ children } : ShoppingCartProps) {
   const [shoppingCart, setShoppingCart] = useState<CartItems[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const cartTotal = shoppingCart.reduce((cartTotal, cartItem) => {
+      return cartTotal + cartItem.price * cartItem.qty;
+    }, 0)
 
-  function addOneToCart(id : string) {
+  console.log(shoppingCart)
+
+  function addOneToCart(id : string, price: number) {
     setShoppingCart(currentCart => {
       if (inCart(currentCart, id)) {
         return currentCart.map(item => {
@@ -30,7 +36,7 @@ export function ShoppingCartProvider({ children } : ShoppingCartProps) {
           return item;
         })
       } else {
-        return [...currentCart, { id, qty: 1 }]
+        return [...currentCart, { id, qty: 1, price }]
       }
     })
   }
@@ -76,6 +82,7 @@ export function ShoppingCartProvider({ children } : ShoppingCartProps) {
     openCart,
     closeCart,
     isOpen,
+    cartTotal
   }
 
   return (
