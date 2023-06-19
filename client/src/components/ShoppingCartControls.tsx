@@ -13,7 +13,7 @@ export default function ShoppingCartControls({ id, qty } : ShoppingCartControlsP
 
   const addToCart = useCallback(() => {
     if (status !== 200) return;
-    addOneToCart(id, product?.price)
+    addOneToCart(id, (product?.price ?? 0))
   }, [id, status, product, addOneToCart])
 
   return (

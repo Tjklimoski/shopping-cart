@@ -13,7 +13,7 @@ export default function ProductCard({ _id, name, price, imgUrl } : Product) {
   //to insure the price is defined when addToCart is clicked.
   const addToCart = useCallback(() => {
     if (status !== 200) return;
-    addOneToCart(_id, product?.price)
+    addOneToCart(_id, (product?.price ?? 0))
   }, [_id, status, product, addOneToCart])
 
   return (

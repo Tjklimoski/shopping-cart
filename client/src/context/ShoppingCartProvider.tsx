@@ -1,23 +1,34 @@
 import React, { ReactNode, useContext, useState } from 'react'
 
-const ShoppingCartContext = React.createContext({});
-
-export function useShoppingCart() {
-  return useContext(ShoppingCartContext);
-}
-
-type ShoppingCartProps = {
+type ShoppingCartProviderProps = {
   children: ReactNode
 }
 
-type CartItems = {
+type CartItem = {
   id: string
   qty: number
   price: number
 }
 
-export function ShoppingCartProvider({ children } : ShoppingCartProps) {
-  const [shoppingCart, setShoppingCart] = useState<CartItems[]>([]);
+type ShoppingCartContext = {
+  shoppingCart: CartItem[],
+  addOneToCart: (id: string, price: number) => void,
+  removeOneFromCart: (id: string) => void,
+  removeFromCart: (id: string) => void,
+  openCart: () => void,
+  closeCart: () => void,
+  isOpen: boolean,
+  cartTotal: number
+}
+
+const ShoppingCartContext = React.createContext({} as ShoppingCartContext);
+
+export function useShoppingCart() {
+  return useContext(ShoppingCartContext);
+}
+
+export function ShoppingCartProvider({ children } : ShoppingCartProviderProps) {
+  const [shoppingCart, setShoppingCart] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const cartTotal = shoppingCart.reduce((cartTotal, cartItem) => {
       return cartTotal + cartItem.price * cartItem.qty;
