@@ -10,7 +10,8 @@ export default function About() {
       { status === 200 && products.map(product => {
         return <ProductCard key={product._id} {...product} />
       })}
-      { status && status !== 200 && <p>STATUS ${status} ERROR</p>}
+      { status !== 200 && status !== 102 && <p>STATUS {status} ERROR</p>}
+      { status === 102 && <p>LOADING...</p>}
     </div>
   </>
 }

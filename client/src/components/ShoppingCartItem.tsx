@@ -17,7 +17,7 @@ export default function ShoppingCartItem({ id, qty} : ShoppingCartItemProps) {
         <div className="shopping-cart-item-info">
           <span className="shopping-cart-item-name">{product?.name}</span>
           <span className="shopping-cart-item-price">
-            {formatPrice(product?.price * qty)}
+            { status === 200 && formatPrice((product?.price ?? 0) * qty)}
           </span>
         </div>
         <ShoppingCartControls id={id} qty={qty} />
