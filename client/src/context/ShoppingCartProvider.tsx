@@ -103,6 +103,6 @@ export function ShoppingCartProvider({ children } : ShoppingCartProviderProps) {
   )
 }
 
-function inCart(cart : CartItems[], id : string) {
+function inCart(cart : CartItem[], id : string) {
   return cart.some(item => item.id === id);
 }
